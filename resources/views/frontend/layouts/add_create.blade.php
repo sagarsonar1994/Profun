@@ -1,0 +1,327 @@
+@extends('frontend.layouts.master')
+
+@section('content')
+
+ <!-- Add form-section start -->
+    <div class="add-row">
+      <div class="container">
+        <div class="step-sec">
+          <span class="step">Create Ad</span>
+          <span class="step">Ad Preview</span>
+          <span class="step">Promot</span>
+          <span class="step">Billing</span>
+        </div>
+        <form id="regForm">
+          <div class="tab">
+            <div class="first-step">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Select Category</label>
+                    <select>
+                      <option>Category 1</option>
+                      <option>Category 2</option>
+                      <option>Category 3</option>
+                      <option>Category 4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Select City</label>
+                    <select>
+                      <option>Location 1</option>
+                      <option>Location 2</option>
+                      <option>Location 3</option>
+                      <option>Location 4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Pin Code</label>
+                    <input type="text" name="">
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" name="">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group upl-img">
+                    <div class="field" align="left">
+                      <label>Upload Image</label>
+                      <input type="file" id="files" name="files[]" multiple />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Age</label>
+                    <input type="text" name="">
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label>Mobile</label>
+                    <input type="text" name="">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1"><i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp</label>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-check email">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck2">I have read the <a href="#">Terms and Conditions of use</a> and <a href="#">Privacy Policy</a> and I consent the processing of my personal data for the purposes related to the provision of the web service.</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab">
+            <div class="second-step">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Category</label>
+                    <p>Call Girl</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Location</label>
+                    <p>Delhi</p>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Title</label>
+                    <p>Title Text</p>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group img-sec">
+                    <label>Images</label>
+                    <img src="images/product-img.jpg">
+                    <img src="images/profile-img-3.jpg">
+                    <img src="images/product-img.jpg">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group img-sec">
+                    <label>Mobile</label>
+                    <p>987664273 <span class="whats-yes"><i class="fa fa-whatsapp" aria-hidden="true"></i> Yes</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab">
+            <div class="third-step">
+              <div class="common-head">
+                <h2>PROMOTE YOUR AD!</h2>
+                <p>Select the offer and promote your ad, or skip this step and Publish for Free!</p>
+              </div>
+              <div class="day-shift">
+                <div class="day-shift-head">
+                  <h3>Day Add sec</h3>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="day-shift-box active">
+                      <p class="day"><i class="fa fa-sun-o" aria-hidden="true"></i></p>
+                      <h4>7 Top-ups for 3 days</h4>
+                      <p>Rs 1200.00</p>
+                      <h5>(22 credits)</h5>
+                      <input type="radio" name="" value="1">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="day-shift-box">
+                      <p class="day"><i class="fa fa-sun-o" aria-hidden="true"></i></p>
+                      <h4>7 Top-ups for 7 days</h4>
+                      <p>Rs 1200.00</p>
+                      <h5>(22 credits)</h5>
+                      <input type="radio" name="" value="1">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="day-shift-box">
+                      <p class="day"><i class="fa fa-sun-o" aria-hidden="true"></i></p>
+                      <h4>7 Top-ups for 15 days</h4>
+                      <p>Rs 1200.00</p>
+                      <h5>(22 credits)</h5>
+                      <input type="radio" name="" value="1">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="day-shift-box">
+                      <p class="day"><i class="fa fa-sun-o" aria-hidden="true"></i></p>
+                      <h4>5 Top-ups for 3 days</h4>
+                      <p>Rs 1200.00</p>
+                      <h5>(22 credits)</h5>
+                      <input type="radio" name="" value="1">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="day-shift-box">
+                      <p class="day"><i class="fa fa-sun-o" aria-hidden="true"></i></p>
+                      <h4>5 Top-ups for 7 days</h4>
+                      <p>Rs 1200.00</p>
+                      <h5>(22 credits)</h5>
+                      <input type="radio" name="" value="1">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="day-shift-box">
+                      <p class="day"><i class="fa fa-sun-o" aria-hidden="true"></i></p>
+                      <h4>5 Top-ups for 15 days</h4>
+                      <p>Rs 1200.00</p>
+                      <h5>(22 credits)</h5>
+                      <input type="radio" name="" value="1">
+                    </div>
+                  </div>
+                </div>
+                <div class="day-time">
+                  <h4>Add Show Timing</h4>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="time-box">
+                        <h5>9am to 2pm</h5>
+                        <input type="radio" name="" value="1">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="time-box active">
+                        <h5>2am to7pm</h5>
+                        <input type="radio" name="" value="1">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="time-box">
+                        <h5>7am to 12am</h5>
+                        <input type="radio" name="" value="1">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="night-shift">
+                <div class="night-shift-head">
+                  <h3>Night Add sec</h3>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="night-shift-box active">
+                      <p class="night"><i class="fa fa-moon-o" aria-hidden="true"></i></p>
+                      <h4>12 Top-ups for 3 days</h4>
+                      <p>Rs 1200.00</p>
+                      <h5>(22 credits)</h5>
+                      <input type="radio" name="" value="1">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="night-shift-box">
+                      <p class="night"><i class="fa fa-moon-o" aria-hidden="true"></i></p>
+                      <h4>12 Top-ups for 7 days</h4>
+                      <p>Rs 1200.00</p>
+                      <h5>(22 credits)</h5>
+                      <input type="radio" name="" value="1">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="night-shift-box">
+                      <p class="night"><i class="fa fa-moon-o" aria-hidden="true"></i></p>
+                      <h4>12 Top-ups for 15 days</h4>
+                      <p>Rs 1200.00</p>
+                      <h5>(22 credits)</h5>
+                      <input type="radio" name="" value="1">
+                    </div>
+                  </div>
+                </div>
+                <div class="night-time">
+                  <h4>Add Show Timing</h4>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="time-box acitve">
+                        <h5>12am to 9am</h5>
+                        <input type="radio" name="" value="1">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab">
+            <div class="fourth-step">
+              <h2><i class="fa fa-shopping-cart" aria-hidden="true"></i> Product in your Cart</h2>
+              <div class="forth-header">
+                <div class="row">
+                  <div class="col-md-3">
+                    <h3>Product</h3>
+                    <p>7 Top-ups for 3 days</p>
+                  </div>
+                  <div class="col-md-3">
+                    <h3>Period</h3>
+                    <p>3 Days</p>
+                  </div>
+                  <div class="col-md-3">
+                    <h3>Timing</h3>
+                    <p>3 Days</p>
+                  </div>
+                  <div class="col-md-3">
+                    <h3>Price</h3>
+                    <p>3 Days</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row-credit">
+                <h3>Total Avilable Credits <span>233</span></h3>
+              </div>
+              <div class="row-credit">
+                <h3>Total Avilable Credits <span>233</span></h3>
+              </div>
+            </div>
+          </div>
+          <div class="button-row">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Add form-section end -->
+    @endsection
+	@section('script')
+	@endsection
