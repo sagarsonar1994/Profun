@@ -20,9 +20,9 @@
                     <label>Select Category</label>
                     <select>
                       <option>Category 1</option>
-                      <option>Category 2</option>
-                      <option>Category 3</option>
-                      <option>Category 4</option>
+                      <option>Category 22</option>
+                      <option>Category 33</option>
+                      <option>Category 44</option>
                     </select>
                   </div>
                 </div>
