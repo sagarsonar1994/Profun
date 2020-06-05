@@ -53,105 +53,105 @@
         <div class="row">
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Ahmedabad')}}">
                 <h3>Ahmedabad</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Bangalore')}}">
                 <h3>Bangalore</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Bhubaneswar')}}">
                 <h3>Bhubaneswar</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Jaipur')}}">
                 <h3>Jaipur</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Chennai')}}">
                 <h3>Chennai</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Delhi')}}">
                 <h3>Delhi</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Goa')}}">
                 <h3>Goa</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Hyderabad')}}">
                 <h3>Hyderabad</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Indore')}}">
                 <h3>Indore</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Kerala')}}">
                 <h3>Kerala</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Kolkata')}}">
                 <h3>Kolkata</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Lucknow')}}">
                 <h3>Lucknow</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Mumbai')}}">
                 <h3>Mumbai</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Pune')}}">
                 <h3>Pune</h3>
               </a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="cat-city-box">
-              <a href="#">
+              <a href="{{route('cityList','Surat')}}">
                 <h3>Surat</h3>
               </a>
             </div>

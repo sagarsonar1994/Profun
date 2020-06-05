@@ -14,6 +14,7 @@
     <!-- Footer section end -->
    @include('frontend.layouts.script')
    @yield('script')
+   
   </body>
 </html>
 

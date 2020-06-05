@@ -17,6 +17,9 @@ function showTab(n) {
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
+  if (n == (x.length - 2)) {
+    document.getElementById("draft").style.display = "inline";
+  }
   
   fixStepIndicator(n)
 }
@@ -35,15 +38,18 @@ function nextPrev(n) {
 
 function validateForm() {
   // This function deals with validation of the form fields
-  var x, y, i, valid = true;
+  var x, y, i,z, valid = true;
   x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
+  y = x[currentTab].getElementsByClassName("mandatory_field");
+  z = x[currentTab].getElementsByClassName("show_title");
   // A loop that checks every input field in the current tab:
+  // console.log(y);
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
     if (y[i].value == "") {
       // add an "invalid" class to the field:
-      y[i].className += " invalid";
+      //y[i].className += " invalid";
+      z[i].style.color = 'red';
       // and set the current valid status to false
       valid = false;
     }
@@ -80,7 +86,12 @@ $(document).ready(function() {
           $("<span class=\"pip\">" +
             "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
             "<br/><span class=\"remove\">Delete</span>" +
-            "</span>").insertAfter("#files");
+            "</span>").insertAfter(".files");
+
+          $("<span class=\"pip\">" +
+            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+            "</span>").insertAfter(".files_preview");
+
           $(".remove").click(function(){
             $(this).parent(".pip").remove();
           });

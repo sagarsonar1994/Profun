@@ -11,91 +11,97 @@
           <span class="step">Promot</span>
           <span class="step">Billing</span>
         </div>
-        <form id="regForm">
+        <p>*Mandatory Fields</p>
+        <form method="post" action="{{route('post_add')}}" enctype="multipart/form-data" id="regForm">
+          @csrf
           <div class="tab">
             <div class="first-step">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>Select Category</label>
-                    <select>
-                      <option>Category 1</option>
-                      <option>Category 2</option>
-                      <option>Category 3</option>
-                      <option>Category 4</option>
+                    <label class="show_title">*Select Category</label>
+                    <select name="category" id="category" class="mandatory_field">
+                      <option value="">Select Category</option>
+                      <option value="Call Girl">Call Girl</option>
+                      <option value="Male Escort">Male Escort</option>
+                      <option value="Massage">Massage</option>
+                      <option value="Dating">Dating</option>
+                      <option value="Adult Chat">Adult Chat</option>
+                      <option value="Bisexual">Bisexual</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>Select City</label>
-                    <select>
-                      <option>Location 1</option>
-                      <option>Location 2</option>
-                      <option>Location 3</option>
-                      <option>Location 4</option>
+                    <label class="show_title">*Select City</label>
+                    <select name="city" id="city" class="mandatory_field">
+                      <option value="">Select City</option>
+                      @foreach($city_list as $city)
+                      <option value="{{$city->city}}">{{$city->city}}</option>
+                      @endforeach
+                      
                     </select>
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-group">
                     <label>Pin Code</label>
-                    <input type="text" name="">
+                    <input type="text" name="pincode" id="pincode">
                   </div>
                 </div>
                 <div class="col-8">
                   <div class="form-group">
                     <label>Address</label>
-                    <input type="text" name="">
+                    <input type="text" name="address" id="address">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" name="">
+                    <label class="show_title">*Title</label>
+                    <input type="text" name="title" id="title" class="mandatory_field">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label>Description</label>
-                    <textarea></textarea>
+                    <label class="show_title">*Description</label>
+                    <textarea name="description" id="desc" class="mandatory_field"></textarea>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group upl-img">
                     <div class="field" align="left">
                       <label>Upload Image</label>
-                      <input type="file" id="files" name="files[]" multiple />
+                      <input type="file" class="files" id="files" name="files[]" multiple />
                     </div>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label>Age</label>
-                    <input type="text" name="">
+                    <label class="show_title">*Age</label>
+                    <input type="text" name="age" id="age" class="mandatory_field">
                   </div>
                 </div>
                 <div class="col-md-5">
                   <div class="form-group">
-                    <label>Mobile</label>
-                    <input type="text" name="">
+                    <label class="show_title">*Mobile</label>
+                    <input type="text" name="mobile" id="mobile" class="mandatory_field">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input mandatory_field" id="exampleCheck1" name="whatsapp_status">
                     <label class="form-check-label" for="exampleCheck1"><i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp</label>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="">
+                    <input type="email" name="email" id="email">
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-check email">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input mandatory_field" id="exampleCheck1" name="term_cond_status">
                     <label class="form-check-label" for="exampleCheck2">I have read the <a href="#">Terms and Conditions of use</a> and <a href="#">Privacy Policy</a> and I consent the processing of my personal data for the purposes related to the provision of the web service.</label>
                   </div>
                 </div>
@@ -108,39 +114,39 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Category</label>
-                    <p>Call Girl</p>
+                    <p id="cat_show">Call Girl</p>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Location</label>
-                    <p>Delhi</p>
+                    <p id="post_location">Delhi</p>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Title</label>
-                    <p>Title Text</p>
+                    <p id="title_show">Title Text</p>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Description</label>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p id="desc_show"></p>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group img-sec">
-                    <label>Images</label>
-                    <img src="images/product-img.jpg">
-                    <img src="images/profile-img-3.jpg">
-                    <img src="images/product-img.jpg">
+                    <label class="files_preview">Images</label>
+                    {{-- <img src="{{asset('public/profun_theme/images/product-img.jpg')}}">
+                    <img src="{{asset('public/profun_theme/images/profile-img-3.jpg')}}">
+                    <img src="{{asset('public/profun_theme/images/product-img.jpg')}}"> --}}
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group img-sec">
                     <label>Mobile</label>
-                    <p>987664273 <span class="whats-yes"><i class="fa fa-whatsapp" aria-hidden="true"></i> Yes</span></p>
+                    <p><span id="mobile_show">987664273</span> <span class="whats-yes"><i class="fa fa-whatsapp" aria-hidden="true"></i> Yes</span></p>
                   </div>
                 </div>
               </div>
@@ -158,12 +164,12 @@
                 </div>
                 <div class="row">
                   <div class="col-md-4">
-                    <div class="day-shift-box active">
+                    <div class="day-shift-box">
                       <p class="day"><i class="fa fa-sun-o" aria-hidden="true"></i></p>
                       <h4>7 Top-ups for 3 days</h4>
                       <p>Rs 1200.00</p>
                       <h5>(22 credits)</h5>
-                      <input type="radio" name="" value="1">
+                      <input type="radio" name="plan" value="7_3">
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -172,7 +178,7 @@
                       <h4>7 Top-ups for 7 days</h4>
                       <p>Rs 1200.00</p>
                       <h5>(22 credits)</h5>
-                      <input type="radio" name="" value="1">
+                      <input type="radio" name="plan" value="7_7">
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -181,7 +187,7 @@
                       <h4>7 Top-ups for 15 days</h4>
                       <p>Rs 1200.00</p>
                       <h5>(22 credits)</h5>
-                      <input type="radio" name="" value="1">
+                      <input type="radio" name="plan" value="7_15">
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -190,7 +196,7 @@
                       <h4>5 Top-ups for 3 days</h4>
                       <p>Rs 1200.00</p>
                       <h5>(22 credits)</h5>
-                      <input type="radio" name="" value="1">
+                      <input type="radio" name="plan" value="5_3">
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -199,7 +205,7 @@
                       <h4>5 Top-ups for 7 days</h4>
                       <p>Rs 1200.00</p>
                       <h5>(22 credits)</h5>
-                      <input type="radio" name="" value="1">
+                      <input type="radio" name="plan" value="5_7">
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -208,7 +214,7 @@
                       <h4>5 Top-ups for 15 days</h4>
                       <p>Rs 1200.00</p>
                       <h5>(22 credits)</h5>
-                      <input type="radio" name="" value="1">
+                      <input type="radio" name="plan" value="5_15">
                     </div>
                   </div>
                 </div>
@@ -218,19 +224,19 @@
                     <div class="col-md-4">
                       <div class="time-box">
                         <h5>9am to 2pm</h5>
-                        <input type="radio" name="" value="1">
+                        <input type="radio" name="time" value="0">
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <div class="time-box active">
+                      <div class="time-box">
                         <h5>2am to7pm</h5>
-                        <input type="radio" name="" value="1">
+                        <input type="radio" name="time" value="1">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="time-box">
                         <h5>7am to 12am</h5>
-                        <input type="radio" name="" value="1">
+                        <input type="radio" name="time" value="2">
                       </div>
                     </div>
                   </div>
@@ -242,12 +248,12 @@
                 </div>
                 <div class="row">
                   <div class="col-md-4">
-                    <div class="night-shift-box active">
+                    <div class="night-shift-box">
                       <p class="night"><i class="fa fa-moon-o" aria-hidden="true"></i></p>
                       <h4>12 Top-ups for 3 days</h4>
                       <p>Rs 1200.00</p>
                       <h5>(22 credits)</h5>
-                      <input type="radio" name="" value="1">
+                      <input type="radio" name="plan" value="12_3">
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -256,7 +262,7 @@
                       <h4>12 Top-ups for 7 days</h4>
                       <p>Rs 1200.00</p>
                       <h5>(22 credits)</h5>
-                      <input type="radio" name="" value="1">
+                      <input type="radio" name="plan" value="12_7">
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -265,7 +271,7 @@
                       <h4>12 Top-ups for 15 days</h4>
                       <p>Rs 1200.00</p>
                       <h5>(22 credits)</h5>
-                      <input type="radio" name="" value="1">
+                      <input type="radio" name="plan" value="12_15">
                     </div>
                   </div>
                 </div>
@@ -273,9 +279,9 @@
                   <h4>Add Show Timing</h4>
                   <div class="row">
                     <div class="col-md-4">
-                      <div class="time-box acitve">
+                      <div class="time-box">
                         <h5>12am to 9am</h5>
-                        <input type="radio" name="" value="1">
+                        <input type="radio" name="time" value="3">
                       </div>
                     </div>
                   </div>
@@ -317,6 +323,8 @@
           <div class="button-row">
             <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
             <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+
+            <button type="submit" id="draft" style="display:none;">Save as draft</button>
           </div>
         </form>
       </div>
@@ -324,4 +332,36 @@
     <!-- Add form-section end -->
     @endsection
 	@section('script')
+  <script type="text/javascript">
+    $(document).on('click', '#nextBtn', function(e) {
+      var category = $('#category').val();
+      var city = $('#city').val();
+      var title = $('#title').val();
+      var description = $('#desc').val();
+      var mobile = $('#mobile').val();
+
+      $('#cat_show').html(category);
+      $('#post_location').html(city);
+
+      $('#title_show').html(title);
+      $('#desc_show').html(description);
+      $('#mobile_show').html(mobile);
+    });
+
+    $(document).on('click', '.day-shift-box', function(e) {
+      $('.day-shift-box').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    $(document).on('click', '.time-box', function(e) {
+      $('.time-box').removeClass('active');
+      $(this).addClass('active');
+    });
+
+    $(document).on('click', '.night-shift-box', function(e) {
+      $('.night-shift-box').removeClass('active');
+      $(this).addClass('active');
+    });
+    
+  </script>
 	@endsection
