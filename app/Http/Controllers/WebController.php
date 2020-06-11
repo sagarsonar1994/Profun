@@ -37,7 +37,7 @@ class WebController extends Controller
 	      	$time_slot = $request->time;
 	      	$credit = "22";
 	      	$status = 1;
-	      	$expiry = @date('Y-m-d H:i:s', strtotime(' +'.$apply_day.'days'));
+            $expiry = $this->expiryGet($request->time, $apply_day);
     	  }
 
 	      //dd($request->all());
@@ -57,21 +57,22 @@ class WebController extends Controller
 	      $storePost->frequency_show = @$frequency_show;
 	      $storePost->apply_day = @$apply_day;
 	      $storePost->time_slot = @$time_slot;
-	      $storePost->post_expired = $expiry;
+	      $storePost->post_expired = @$expiry;
 	      $storePost->credit = @$credit;
 	      $storePost->status = @$status;
+          $storePost->show_time = @$request->time == "3" ? 'night' : 'day';
 	      $storePost->save();
 
       	foreach ($request->files as $keys => $value) {
     	  foreach ($value as $image) {
     	  	//dd($image);
     	  	$img_height = \Image::make($image)->height();
-    	  	$img_width = \Image::make($image)->width();
+    	  	$img_width  = \Image::make($image)->width();
 
     	  	$new_name = time() . '_' . $image->getClientOriginalName();
     	  	$img = \Image::make($image->getPathName());
-    	  	$img->text('www.profun.com',$img_height-20,$img_width/2, function($font) {
-    	  		$font->size(40);
+    	  	$img->text('www.profun.com',($img_width/2)-1,$img_height-20, function($font) {
+    	  		$font->size(50);
 			    $font->color('#fdf6e3');
 			});
     	  	
@@ -88,6 +89,38 @@ class WebController extends Controller
 	    
     }
 
+
+    public function expiryGet($time, $apply){
+        date_default_timezone_set("Asia/Calcutta");
+        $current_time = date('H:i:s');
+        $slot_0 = ['09:00:00','14:00:00'];
+        $slot_1 = ['14:00:00','19:00:00'];
+        $slot_2 = ['07:00:00','23:59:00'];
+        $slot_3 = ['00:00:00','09:00:00'];
+
+        if($current_time <= $slot_0[1] && $current_time >= $slot_0[0]){
+            $post_time = date('Y-m-d '.$current_time);
+            $expiry = date('Y-m-d H:i:s', strtotime($post_time . ' +'.$apply.'days'));
+        }
+
+        if($current_time <= $slot_1[1] && $current_time >= $slot_1[0]){
+            $post_time = date('Y-m-d '.$current_time);
+            $expiry = date('Y-m-d H:i:s', strtotime($post_time . ' +'.$apply.'days'));
+        }
+
+        if($current_time <= $slot_2[1] && $current_time >= $slot_2[0]){
+            $post_time = date('Y-m-d '.$current_time);
+            $expiry = date('Y-m-d H:i:s', strtotime($post_time . ' +'.$apply.'days'));
+        }
+
+        if($current_time <= $slot_3[1] && $current_time >= $slot_3[0]){
+            $post_time = date('Y-m-d '.$current_time);
+            $expiry = date('Y-m-d H:i:s', strtotime($post_time . ' +'.$apply.'days'));
+        }
+
+        return $expiry;
+    }
+
     public function searchList(Request $request) {
     	date_default_timezone_set("Asia/Calcutta");
     	$show_time = date('H:i:s');
@@ -100,7 +133,8 @@ class WebController extends Controller
     	if($request->category) {
     		$getPostList = $getPostList->where('category',$request->category);
     	}
-    	$getPostList = $getPostList->orderBy('show_order','asc')->get();
+    	$getPostList=$getPostList->where('post_expired','>=',date('Y-m-d H:i:s'))
+                    ->orderBy('show_order','asc')->get();
 
     	return view('frontend.ads_list', compact('getPostList','request'));
 
@@ -113,12 +147,10 @@ class WebController extends Controller
     }
 
 
-
     public function cityCategoryList(Request $request, $category, $city) {
     	date_default_timezone_set("Asia/Calcutta");
     	$show_time = date('H:i:s');
-    	//dd($show_time);
-    	$getPostList = Post::orderBy('created_at','asc')->where('city',$city);  	
+    	$getPostList = Post::where('city',$city);
     	if($category) {
     		$cat_string = explode('-',$category);
     		if(count($cat_string)>1){
@@ -128,9 +160,9 @@ class WebController extends Controller
     		}
     		$getPostList = $getPostList->where('category',$city_query);
     	}
-    	$getPostList = $getPostList->whereTime('post_time','>=',$show_time)->orWhereTime('post_time','<',$show_time)->get();
-    	// dd($getPostList);
-    	
+    	$getPostList =$getPostList->where('post_expired','>=',date('Y-m-d H:i:s'))
+                    ->orderBy('show_order','asc')->get();
+    
     	return view('frontend.ads_list', compact('getPostList','request'));
     }
 
@@ -165,12 +197,11 @@ class WebController extends Controller
 
     public function manageAds() {
     	date_default_timezone_set("Asia/Calcutta");
-    	// return date('Y-m-d', strtotime('1 day'));
     	$current_time = date('H:i:s');
 
     	$getCurrentHour = date('H:00:00');
-    	$afterOneHour = date('H:00:00', strtotime('1 hour'));
-    	$active_slot = NULL;
+    	$afterOneHour 	= date('H:00:00', strtotime('1 hour'));
+    	$active_slot 	= NULL;
 
     	$slot_0 = ['14:00:00','19:00:00'];
     	$slot_1 = ['09:00:00','14:00:00'];
@@ -192,52 +223,89 @@ class WebController extends Controller
     	if($current_time <= $slot_3[1] && $current_time >= $slot_3[0]){
     		$active_slot = "3";
     	}
+    		
 
-    	
-    	$list1 = Post::where('status',1)
-    			->where('time_slot',$active_slot)
-    			->whereColumn('frequency_show','!=','complete_frequency')
-    			->get();
+    		$list1=Post::where('status',1)
+    				->where('time_slot',$active_slot)
+    				->whereColumn('frequency_show','!=','complete_frequency')
+    				->get();
         
-    	
+    		$divide_slot = $list1->count(); 
+    		foreach ($list1 as $key1 => $data_list1) {
+    			
+    			$next_show_time=date('H:'.floor(59/$divide_slot)*($key1+1)).':00';
+    			$update_data = [
+				   	  'next_show_time' => $next_show_time,
+				   	  'start_show'     => $getCurrentHour,
+				   	  'expire_show'    => $afterOneHour,
+				   	  'show_order' 	   => ($key1+1)
+				 	];
 
-        $list2 = Post::where('status',1)
-    			->where('time_slot','!=',$active_slot)
-    			->orwhereColumn('frequency_show','=','complete_frequency')
-    			->orderBy('show_order','asc')->get();
-    			//return $list2;
+				$manageList=Post::where('id',$data_list1->id)->update($update_data);
+    		}
 
-  		$getList = $list1->merge($list2);
 
-		  foreach ($getList as $key => $post) {
-		   	$divide_slot = $getList->count();
+	        $list2=Post::where('status',1)
+	    			->where('time_slot','!=',$active_slot)
+	    			->orwhereColumn('frequency_show','=','complete_frequency')
+	    			->orderBy('show_order','asc')->get();
+	    	
 
-		   	if($post->time_slot == $active_slot) {
-		   	  
-		   	  $update_data = ['next_show_time' => date('H:'.floor(59/$divide_slot)*($key+1)).':00','start_show' => $getCurrentHour,'expire_show' => $afterOneHour,'show_order' => ($key+1)];
-		   	}
-		   	else{
-		   	  
-		   	  	$update_data = ['show_order' => ($key+1)];
-		   	}
+	    	foreach ($list2 as $key2 => $data_list2) {
+    			
+    			$update_data = ['show_order' => ($key2+$divide_slot+1)];
 
-		   	$manageList = Post::where('id',$post->id)
-		   				->update($update_data);
-		  }
+				$manageList=Post::where('id',$data_list2->id)->update($update_data);
+    		}
 
-		  $manageFrequency = Post::where('show_order',1)->first();
-		  $count = $manageFrequency->complete_frequency + 1;
-		  
-		  if($manageFrequency->frequency_show != $manageFrequency->complete_frequency){
+	    	
+
+		  $manageListOrder1=Post::where('status',1)
+    				->where('time_slot',$active_slot)
+    				->whereColumn('frequency_show','!=','complete_frequency')
+    				->whereTime('next_show_time','>',$current_time)
+    				->orderBy('next_show_time','asc')
+    				->get();
+
+    	  $manageListOrder2=Post::where('status',1)
+    				->where('time_slot',$active_slot)
+    				->whereColumn('frequency_show','!=','complete_frequency')
+    				->whereTime('next_show_time','<',$current_time)
+    				->orderBy('next_show_time','desc')
+    				->get();
+
+    	  $getNewList = $manageListOrder1->merge($manageListOrder2);
+
+
+    	  foreach ($getNewList as $ad_key => $listOrder) {
+
+    	  	$updateList=Post::where('id',$listOrder->id)
+    	  			   ->update(['show_order' => ($ad_key+1)]);
+    	  }
+
+    	  $name = "slot_$active_slot";
+    	  $current_array = eval('return $'. $name . ';');
+		  $time_diff=strtotime($getCurrentHour)-strtotime($current_array[0]);
+
+    	  $manageFrequency=Post::where('show_order',1)->first();
+		  $count = $manageFrequency->complete_frequency + 1;		  
+		  if($manageFrequency->frequency_show != $manageFrequency->complete_frequency || $manageFrequency->complete_frequency < $time_diff){
+
 		  	$manageFrequency->complete_frequency = $count;
 		  	$manageFrequency->save();
 		  }
 
-		  $manageResetDate = Post::whereColumn('frequency_show','=','complete_frequency')->update(['reset_date' => date('Y-m-d', strtotime('1 day'))]);
+		  $manageResetDate=Post::whereColumn('frequency_show','=','complete_frequency')->update(['reset_date' => date('Y-m-d', strtotime('1 day'))]);
 		
 		return "success";
 		
 
+    }
+
+
+
+    public function creditBuyPage() {
+        return view('frontend.credit_buy');
     }
 
     

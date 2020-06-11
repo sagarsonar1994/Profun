@@ -175,7 +175,6 @@ body { margin:0; padding:0;  font-size:15px; color:#45494c; font-family: 'SegoeU
 .add-row .first-step textarea { width: 100%; padding: 5px 7px; min-height: 65px; border: 1px solid #d8d8d8; border-radius: 2px; cursor: pointer; resize:none; }
 .add-row .first-step textarea:focus { box-shadow: none; outline:none; }
 .add-row input.invalid { background-color: #ffdddd; }
-.add-row label .show_title { color: #ffdddd; } /*by sagar*/
 .add-row .tab { display: none;}
 .add-row form button { background: #1985a1; color: #fff; border: none; padding:5px 25px; font-size: 16px;  cursor: pointer; border: none; border-radius: 2px;}
 .add-row form button:focus { box-shadow: none; outline: none; }
@@ -285,6 +284,120 @@ body { margin:0; padding:0;  font-size:15px; color:#45494c; font-family: 'SegoeU
 .add-detail-sec .add-detail-box .button-sec button { padding: 5px 10px; background: #1985a1; color: #fff; border: none; border-radius: 2px; margin-right: 10px; }
 .add-detail-sec .add-detail-box .button-sec button:focus { outline: none; box-shadow: none;}
 .add-detail-sec .add-detail-box .button-sec button.whats { background: #fa364e; }
-
 /* Add detail sec end */
+/* Buy Credit detail sec start */
+.credits-row { position: relative; max-width: 100%; margin: 0 ; }
+.credits-row .credit-heading { position: relative; margin-bottom: 15px; padding: 10px; background: #f8f8f8;  }
+.credits-row .credit-heading h2 { font-size: 24px; margin: 0; color: #000; }
+.credits-row .credit-form { position: relative; margin:0; }
+.credits-row .credit-form form { position: relative; margin:0; width: 100%; margin-bottom: 25px; }
+.credits-row .credit-form .credit-bx { position: relative; padding: 10px; border-radius: 4px; box-shadow: 0 0 3px rgba(0,0,0,0.4); margin-bottom: 15px; }
+.credit-form .credit-bx .form-check-label { font-weight: 600; font-size: 16px; color: #000; }
+.credit-form .credit-bx .text-right { position: relative;  }
+.credit-form .credit-bx .text-right h4 { font-size: 18px; color: #000; font-weight: 600; margin: 0; }
+.credit-form .credit-bx .text-right h4 span { display: inline-block; padding: 3px 10px; border-radius: 2px; background: #1985a1; color: #fff; font-weight: 500; font-size: 14px; margin-right: 15px; }
+.credit-form .credit-bx p { margin: 0; }
+.credit-form .credit-bx .form-check-inline, .credit-form .credit-bx .text-center,
+.credit-form .credit-bx .text-right { margin-top: 5px; margin-bottom: 5px; }
+.credit-form form .sbm-sec { position:relative; margin: 15px 0; text-align: right; }
+.credit-form form .sbm-sec button { padding: 5px 5px; background: #fa364e; color: #fff; font-size: 18px; border: none; border-radius: 3px; min-width: 200px; }
+.credit-form form .sbm-sec button:focus { box-shadow: none; outline: none; }
+.credit-form form .sbm-sec button:hover { background: #1985a1; }
 
+
+.history-row { position: relative; max-width: 100%; margin: 0 ; }
+.history-row .history-heading { position: relative; margin-bottom: 15px; padding: 10px; background: #f8f8f8;  }
+.history-row .history-heading h2 { font-size: 24px; margin: 0; color: #000; }
+.history-row .history-dtl { position: relative; }
+.history-row .history-dtl span.success { background: #2db700; color: #fff; padding:1px 5px; border-radius: 3px; }
+.history-row .history-dtl span.pending { background: #e2b100; color: #fff; padding:1px 5px; border-radius: 3px; }
+/* Buy Credit detail sec end */
+/* Pay row section css start */
+.pay-row { position: relative; max-width: 100%; margin:20px 0 15px 0; }
+.pay-row .pay-heading { position: relative; margin-bottom: 15px; padding: 10px; background: #f8f8f8;  }
+.pay-row .pay-heading h2 { font-size: 24px; margin: 0; color: #000; }
+.pay-row .pay-heading h2 span { float: right; }
+.pay-row .pay-form { position: relative; margin:0; }
+.pay-row .pay-form form { position: relative; margin:0; width: 100%; margin-bottom: 25px; }
+.pay-row .pay-form form table h4 { margin: 0; text-align: right; font-size: 24px; color: #1985a1; font-weight: 600; }
+.pay-form .payment-system { padding: 15px; box-shadow: 0 0 3px rgba(0,0,0,0.4); border-radius: 4px; background: #fff; margin-top: 20px; }
+ .form-check { position: relative; margin-bottom: 15px; }
+.pay-form .payment-system .form-check img { height: 25px; }
+.pay-form .payment-system .pay-group-box { position: relative; }
+.pay-form form .sbm-sec { position:relative; margin: 15px 0; text-align: right; }
+.pay-form form .sbm-sec button { padding: 5px 5px; background: #fa364e; color: #fff; font-size: 18px; border: none; border-radius: 3px; min-width: 200px; }
+.pay-form form .sbm-sec button:focus { box-shadow: none; outline: none; }
+.pay-form form .sbm-sec button:hover { background: #1985a1; }
+.pay-form form .upload-shot { padding: 15px; border-radius: 5px; box-shadow: 0 0 3px rgba(0,0,0,0.3); margin-top:15px; }
+.pay-form form .upload-shot .form-group { margin: 0; }
+.pay-form form .upload-shot label { display: block; margin-bottom: 7px; }
+.pay-form form .upload-shot input { width: 100%; padding: 5px; border-radius: 3px; border:1px solid #ccc; }
+/* Pay row section css end */
+
+/* Responsive css start */
+@media(max-width: 1140px){
+.footer-sec .social-nav { margin: 10px 0; }
+.category-sec .slider-box img { object-fit: cover; object-position: center; width: 100%; height:350px;}
+}
+@media(max-width:991px){
+.category-sec .slider-box img { height: 280px; }
+.footer-sec .top-section ul li { margin-right: 7px; }
+.footer-sec .top-section ul li a { font-size: 14px; }
+}
+
+@media(max-width:767px){
+.category-sec .slider-box img { height: 250px; }
+.serach-sec { padding: 15px 0; }
+.serach-sec form { max-width: 500px; }
+.serach-sec form select { margin-bottom: 10px; }
+.category-sec .category-heading h1{ font-size: 20px; }
+.category-sec .category-heading p { font-size: 14px; }
+.slider-box .caption-text { top: 20px; }
+.slider-box .caption-text h2 { font-size: 18px; }
+.slider-box .caption-text p { font-size: 14px; }
+.cat-city-row .cat-city-box { margin-bottom: 15px; }
+.footer-sec .footer-btm p { font-size: 14px; }
+.footer-sec .social-nav ul li a { font-size: 25px; }
+.footer-sec{ padding: 10px 0; }
+.footer-sec .footer-btm { padding-top: 10px; }
+.header-sec .logo img { max-width: 100%; }
+.add-row .first-step .form-check { margin-top: 5px; }
+.add-row .step{ padding: 4px; font-size: 13px; }
+.ads-row .nav-tabs .nav-link { padding: 5px; font-size: 14px; }
+.ads-row{ max-width: 500px; margin:0 auto; margin-top:12px; margin-bottom:12px; }
+.ads-row .filter-ads form select,
+.ads-row .filter-ads form input { margin-bottom: 7px; }
+.ad-row .ad-box-sec .ad-box-cnt{ padding: 10px 10px 5px 10px; margin-top: 0; }
+.credits-row .credit-form .credit-bx .text-center,
+.credits-row .credit-form .credit-bx .text-right { text-align: left !important;  }
+.credits-row .credit-heading h2 { font-size: 18px; }
+.add-detail-sec .add-detail-box h1 { font-size: 16px; }
+.add-detail-sec{ margin: 15px 0; }
+.bradcomb-sec { margin-top: 10px; }
+.gallery-sec { position: relative; max-width: 90%; margin: 0 auto; }
+.ad-row-list .ad-box-sec .ad-box-cnt { padding: 10px 10px 5px 10px; margin-top: 0; }
+.ad-row-list { max-width: 500px; margin:0 auto; margin-top:12px; margin-bottom:12px; }
+.cat-section { max-width: 500px; margin:0 auto; margin-top:12px; margin-bottom:12px; }
+.ad-row-list .ad-box-sec h3 { font-size: 18px; }
+.ad-row-list .ad-box-sec p { font-size: 13px; }
+.dasborad-sec { max-width: 500px; margin:0 auto; margin-top:12px; margin-bottom:12px; }
+.dasborad-sec .profile-box { margin-bottom: 15px; }
+.cat-section .cat-heading,
+.cat-section .cat-sec-box {margin-bottom: 15px; }
+.add-row { margin:10px; }
+}
+@media(max-width:575px){
+.category-sec { margin: 20px 0; }
+.header-sec .right-nav ul li ,
+.cat-section .cat-sec-box{ margin-right: 5px; }
+.header-sec .right-nav ul li a{ font-size: 12px; }
+.header-sec .right-nav ul li:nth-child(1) a{ padding: 5px; }
+.header-sec .right-nav ul{ margin-top:1px; }
+.footer-sec .top-section ul li { width: 49%; }
+.add-row .step.active { margin-bottom: 5px; }
+.add-row { padding:5px; }
+.ads-row, .ad-row-list, .cat-section, .dasborad-sec { max-width:400px;}
+.pay-row .pay-heading h2 { font-size: 18px; }
+.pay-row .pay-heading h2 span { float: none;display: block; margin-left: 15px; margin-top: 7px;}
+
+}

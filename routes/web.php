@@ -58,7 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/add/post', 'WebController@addPostShow')->name('addPostShow');
     Route::post('/post_add','WebController@postAdd')->name('post_add');
     Route::get('/user/ads/list', 'WebController@userAdsList')->name('userAdsList');
-
+    Route::get('/credit/buy', 'WebController@creditBuyPage')->name('creditBuyPage');
+    
 });
 });
 
